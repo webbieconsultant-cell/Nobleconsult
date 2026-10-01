@@ -21,7 +21,22 @@ faqItems.forEach((item) => {
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 if (contactForm && formStatus) {
-  contactForm.addEventListener("submit", () => {
-    formStatus.textContent = "Your email app is opening with the enquiry ready to send.";
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const recipient = "hello@nobleconsultant.com";
+    const subject = `New client enquiry from ${formData.get("Name")}`;
+    const body = [
+      `Name: ${formData.get("Name")}`,
+      `Email: ${formData.get("Email")}`,
+      `Project type: ${formData.get("Project type")}`,
+      "",
+      "Goals and message:",
+      formData.get("Message")
+    ].join("\n");
+
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    formStatus.textContent = "Your email app is opening with the enquiry details ready to send.";
   });
 }
