@@ -25,7 +25,7 @@ if (contactForm && formStatus) {
     event.preventDefault();
 
     const formData = new FormData(contactForm);
-    const recipient = "hello@nobleconsultant.com";
+    const recipient = "ayodeleayomide484@gmail.com";
     const subject = `New client enquiry from ${formData.get("Name")}`;
     const body = [
       `Name: ${formData.get("Name")}`,
@@ -39,4 +39,4 @@ if (contactForm && formStatus) {
     window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     formStatus.textContent = "Your email app is opening with the enquiry details ready to send.";
   });
-}
+  }
