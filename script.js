@@ -39,4 +39,4 @@ if (contactForm && formStatus) {
     window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     formStatus.textContent = "Your email app is opening with the enquiry details ready to send.";
   });
-  }
+}
